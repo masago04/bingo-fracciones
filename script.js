@@ -79,8 +79,7 @@ function nuevoElemento() {
       return;
     }
     contenidoElem.textContent = bola.fraccion;
-  }
-  else {
+  } else {
     bola = aleatorioSinRepetir(equivalentes, historialEquivalentes);
     tipoElem.textContent = "Fracción equivalente";
     
@@ -101,7 +100,6 @@ function nuevoElemento() {
       resultadoElem.classList.remove("oculto");
     };
     btnAccion.classList.remove("oculto");
-
   }
 
 }
@@ -122,6 +120,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   btnNuevo.addEventListener("click", nuevoElemento);
   btnReiniciar.addEventListener("click", reiniciarBingo);
 });
+
 
 
 
