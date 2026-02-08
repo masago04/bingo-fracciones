@@ -102,15 +102,9 @@ function nuevoElemento() {
 // Función para reiniciar bingo
 // -----------------------------
 function reiniciarBingo() {
-  historialProblemas = [];
-  historialFracciones = [];
-  historialEquivalentes = [];
-  tipoElem.textContent = "";
-  contenidoElem.textContent = "";
-  resultadoElem.textContent = "";
-  resultadoElem.classList.add("oculto");
-  btnAccion.classList.add("oculto");
+  location.reload(); // recarga toda la página
 }
+
 
 // -----------------------------
 // Inicializar
@@ -120,4 +114,5 @@ window.addEventListener("DOMContentLoaded", async () => {
   btnNuevo.addEventListener("click", nuevoElemento);
   btnReiniciar.addEventListener("click", reiniciarBingo);
 });
+
 
