@@ -83,17 +83,25 @@ function nuevoElemento() {
   else {
     bola = aleatorioSinRepetir(equivalentes, historialEquivalentes);
     tipoElem.textContent = "Fracción equivalente";
+    
     if (!bola) {
       contenidoElem.textContent = "¡Se acabaron las fracciones equivalentes!";
       return;
     }
-    contenidoElem.innerHTML = `<p>Simplifica la siguiente fracción:</p><p><strong>${bola.original}</strong></p>`;
+    
+    // Aquí ponemos el mensaje encima de la fracción
+    contenidoElem.innerHTML = `
+      <p><strong>Simplifica la siguiente fracción:</strong></p>
+      <p style="font-size:1.5rem; margin-top:0.5rem;"><strong>${bola.original}</strong></p>
+    `;
+    
     btnAccion.textContent = "Simplificar fracción";
     btnAccion.onclick = () => {
       resultadoElem.textContent = `Fracción irreducible: ${bola.irreducible}`;
       resultadoElem.classList.remove("oculto");
     };
     btnAccion.classList.remove("oculto");
+
   }
 
 }
@@ -114,5 +122,6 @@ window.addEventListener("DOMContentLoaded", async () => {
   btnNuevo.addEventListener("click", nuevoElemento);
   btnReiniciar.addEventListener("click", reiniciarBingo);
 });
+
 
 
