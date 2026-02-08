@@ -79,7 +79,7 @@ function nuevoElemento() {
       return;
     }
     contenidoElem.textContent = bola.fraccion;
-
+  }
   else {
     bola = aleatorioSinRepetir(equivalentes, historialEquivalentes);
     tipoElem.textContent = "Fracción equivalente";
@@ -122,6 +122,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   btnNuevo.addEventListener("click", nuevoElemento);
   btnReiniciar.addEventListener("click", reiniciarBingo);
 });
+
 
 
 
