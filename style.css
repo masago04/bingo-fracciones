@@ -108,11 +108,27 @@ button.accion {
   font-weight: bold;
 }
 
+/* Botón reiniciar fijo abajo a la izquierda */
 button.reiniciar {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
   background-color: #388e3c;
   color: white;
   font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+
+button.reiniciar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 12px rgba(0,0,0,0.2);
+}
+
 
 /* Ocultar elementos */
 .oculto {
@@ -126,3 +142,4 @@ footer {
   font-size: 0.9rem;
   color: #666;
 }
+
