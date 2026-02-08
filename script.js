@@ -5,12 +5,18 @@ let problemas = [];
 let fracciones = [];
 let equivalentes = [];
 
+// Historial de bolas ya salidas
+let historialProblemas = [];
+let historialFracciones = [];
+let historialEquivalentes = [];
+
 // Elementos del DOM
 const tipoElem = document.getElementById("tipo");
 const contenidoElem = document.getElementById("contenido");
 const resultadoElem = document.getElementById("resultado");
 const btnAccion = document.getElementById("btn-accion");
 const btnNuevo = document.getElementById("btn-nuevo");
+const btnReiniciar = document.getElementById("btn-reiniciar");
 
 // -----------------------------
 // Función para cargar datos JSON
@@ -20,44 +26,44 @@ async function cargarDatos() {
     problemas = await fetch("data/problemas.json").then(res => res.json());
     fracciones = await fetch("data/fracciones.json").then(res => res.json());
     equivalentes = await fetch("data/equivalentes.json").then(res => res.json());
-    console.log("Problemas:", problemas);
-    console.log("Fracciones:", fracciones);
-    console.log("Equivalentes:", equivalentes);
+    console.log("Datos cargados ✅");
   } catch (error) {
     console.error("Error cargando los datos:", error);
   }
 }
 
-
 // -----------------------------
-// Función para obtener un elemento aleatorio de un array
+// Función para obtener un elemento aleatorio sin repetir
 // -----------------------------
-function aleatorio(lista) {
-  return lista[Math.floor(Math.random() * lista.length)];
+function aleatorioSinRepetir(lista, historial) {
+  const disponibles = lista.filter(item => !historial.includes(item.id));
+  if (disponibles.length === 0) return null; // Se acabaron
+  const elegido = disponibles[Math.floor(Math.random() * disponibles.length)];
+  historial.push(elegido.id);
+  return elegido;
 }
 
 // -----------------------------
 // Función para generar una nueva bola
 // -----------------------------
 function nuevoElemento() {
-  // Ocultar elementos previos
   tipoElem.textContent = "";
   contenidoElem.textContent = "";
   resultadoElem.textContent = "";
   resultadoElem.classList.add("oculto");
   btnAccion.classList.add("oculto");
 
-  // Elegir tipo de bola aleatorio: 0=problema, 1=fracción normal, 2=equivalente
   const tipoBola = Math.floor(Math.random() * 3);
+  let bola;
 
   if (tipoBola === 0) {
-    // -----------------------------
-    // Problema
-    // -----------------------------
-    const bola = aleatorio(problemas);
+    bola = aleatorioSinRepetir(problemas, historialProblemas);
     tipoElem.textContent = "Problema";
+    if (!bola) {
+      contenidoElem.textContent = "¡Se acabaron los problemas!";
+      return;
+    }
     contenidoElem.innerHTML = `<p>${bola.enunciado}</p><p><strong>${bola.pregunta}</strong></p>`;
-
     btnAccion.textContent = "Ver resultado";
     btnAccion.onclick = () => {
       resultadoElem.textContent = `Resultado: ${bola.resultado}`;
@@ -66,21 +72,22 @@ function nuevoElemento() {
     btnAccion.classList.remove("oculto");
 
   } else if (tipoBola === 1) {
-    // -----------------------------
-    // Fracción normal
-    // -----------------------------
-    const bola = aleatorio(fracciones);
+    bola = aleatorioSinRepetir(fracciones, historialFracciones);
     tipoElem.textContent = "Fracción normal";
+    if (!bola) {
+      contenidoElem.textContent = "¡Se acabaron las fracciones normales!";
+      return;
+    }
     contenidoElem.textContent = bola.fraccion;
 
   } else {
-    // -----------------------------
-    // Fracción equivalente
-    // -----------------------------
-    const bola = aleatorio(equivalentes);
+    bola = aleatorioSinRepetir(equivalentes, historialEquivalentes);
     tipoElem.textContent = "Fracción equivalente";
+    if (!bola) {
+      contenidoElem.textContent = "¡Se acabaron las fracciones equivalentes!";
+      return;
+    }
     contenidoElem.textContent = bola.original;
-
     btnAccion.textContent = "Reducir fracción";
     btnAccion.onclick = () => {
       resultadoElem.textContent = `Irreducible: ${bola.irreducible}`;
@@ -91,10 +98,24 @@ function nuevoElemento() {
 }
 
 // -----------------------------
+// Función para reiniciar bingo
+// -----------------------------
+function reiniciarBingo() {
+  historialProblemas = [];
+  historialFracciones = [];
+  historialEquivalentes = [];
+  tipoElem.textContent = "";
+  contenidoElem.textContent = "";
+  resultadoElem.textContent = "";
+  resultadoElem.classList.add("oculto");
+  btnAccion.classList.add("oculto");
+}
+
+// -----------------------------
 // Inicializar
 // -----------------------------
-window.addEventListener("load", async () => {
+window.addEventListener("DOMContentLoaded", async () => {
   await cargarDatos();
-  console.log("Datos cargados ✅");
+  btnNuevo.addEventListener("click", nuevoElemento);
+  btnReiniciar.addEventListener("click", reiniciarBingo);
 });
-btnNuevo.addEventListener("click", nuevoElemento);
