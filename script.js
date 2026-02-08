@@ -53,56 +53,66 @@ function nuevoElemento() {
   resultadoElem.classList.add("oculto");
   btnAccion.classList.add("oculto");
 
-  const tipoBola = Math.floor(Math.random() * 3);
   let bola;
+  let tiposDisponibles = [0, 1, 2]; // 0=problema,1=fracción normal,2=fracción equivalente
 
-  if (tipoBola === 0) {
-    bola = aleatorioSinRepetir(problemas, historialProblemas);
-    tipoElem.textContent = "Problema";
-    if (!bola) {
-      contenidoElem.textContent = "¡Se acabaron los problemas!";
-      return;
-    }
-    contenidoElem.innerHTML = `<p>${bola.enunciado}</p><p><strong>${bola.pregunta}</strong></p>`;
-    btnAccion.textContent = "Ver resultado";
-    btnAccion.onclick = () => {
-      resultadoElem.textContent = `Resultado: ${bola.resultado}`;
-      resultadoElem.classList.remove("oculto");
-    };
-    btnAccion.classList.remove("oculto");
+  while (tiposDisponibles.length > 0) {
+    const tipoBola = tiposDisponibles[Math.floor(Math.random() * tiposDisponibles.length)];
 
-  } else if (tipoBola === 1) {
-    bola = aleatorioSinRepetir(fracciones, historialFracciones);
-    tipoElem.textContent = "Fracción normal";
-    if (!bola) {
-      contenidoElem.textContent = "¡Se acabaron las fracciones normales!";
-      return;
+    if (tipoBola === 0) {
+      bola = aleatorioSinRepetir(problemas, historialProblemas);
+      if (bola) {
+        tipoElem.textContent = "Problema";
+        contenidoElem.innerHTML = `<p>${bola.enunciado}</p><p><strong>${bola.pregunta}</strong></p>`;
+        btnAccion.textContent = "Ver resultado";
+        btnAccion.onclick = () => {
+          resultadoElem.textContent = `Resultado: ${bola.resultado}`;
+          resultadoElem.classList.remove("oculto");
+        };
+        btnAccion.classList.remove("oculto");
+        return;
+      } else {
+        // quitar tipo de la lista de disponibles
+        tiposDisponibles = tiposDisponibles.filter(t => t !== 0);
+      }
+
+    } else if (tipoBola === 1) {
+      bola = aleatorioSinRepetir(fracciones, historialFracciones);
+      if (bola) {
+        tipoElem.textContent = "Fracción normal";
+        contenidoElem.textContent = bola.fraccion;
+        return;
+      } else {
+        tiposDisponibles = tiposDisponibles.filter(t => t !== 1);
+      }
+
+    } else if (tipoBola === 2) {
+      bola = aleatorioSinRepetir(equivalentes, historialEquivalentes);
+      if (bola) {
+        tipoElem.textContent = "Fracción equivalente";
+        contenidoElem.innerHTML = `
+          <p><strong>Simplifica la siguiente fracción:</strong></p>
+          <p style="font-size:1.5rem; margin-top:0.5rem;"><strong>${bola.original}</strong></p>
+        `;
+        btnAccion.textContent = "Simplificar fracción";
+        btnAccion.onclick = () => {
+          resultadoElem.textContent = `Fracción irreducible: ${bola.irreducible}`;
+          resultadoElem.classList.remove("oculto");
+        };
+        btnAccion.classList.remove("oculto");
+        return;
+      } else {
+        tiposDisponibles = tiposDisponibles.filter(t => t !== 2);
+      }
     }
-    contenidoElem.textContent = bola.fraccion;
-  } else {
-    bola = aleatorioSinRepetir(equivalentes, historialEquivalentes);
-    tipoElem.textContent = "Fracción equivalente";
-    
-    if (!bola) {
-      contenidoElem.textContent = "¡Se acabaron las fracciones equivalentes!";
-      return;
-    }
-    
-    // Aquí ponemos el mensaje encima de la fracción
-    contenidoElem.innerHTML = `
-      <p><strong>Simplifica la siguiente fracción:</strong></p>
-      <p style="font-size:1.5rem; margin-top:0.5rem;"><strong>${bola.original}</strong></p>
-    `;
-    
-    btnAccion.textContent = "Simplificar fracción";
-    btnAccion.onclick = () => {
-      resultadoElem.textContent = `Fracción irreducible: ${bola.irreducible}`;
-      resultadoElem.classList.remove("oculto");
-    };
-    btnAccion.classList.remove("oculto");
   }
 
+  // Si llegamos aquí, se acabaron todas las bolas
+  tipoElem.textContent = "";
+  contenidoElem.textContent = "¡Se han agotado todas las bolas del bingo!";
+  btnAccion.classList.add("oculto");
 }
+
 
 // -----------------------------
 // Función para reiniciar bingo
@@ -120,6 +130,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   btnNuevo.addEventListener("click", nuevoElemento);
   btnReiniciar.addEventListener("click", reiniciarBingo);
 });
+
 
 
 
