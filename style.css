@@ -96,16 +96,21 @@ button:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Botón principal */
+/* Botones específicos */
 button.nuevo {
   background-color: #1976d2;
   color: white;
 }
 
-/* Botón acción (ver resultado / reducir) */
 button.accion {
   background-color: #fbc02d;
   color: #333;
+  font-weight: bold;
+}
+
+button.reiniciar {
+  background-color: #388e3c;
+  color: white;
   font-weight: bold;
 }
 
