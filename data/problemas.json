@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "enunciado": "En una caja hay 6 caramelos. Ana se come los 6.",
+    "pregunta": "¿Qué fracción de la caja se ha comido?",
+    "resultado": "1"
+  },
+  {
+    "id": 2,
+    "enunciado": "Una pizza está dividida en 2 partes iguales. Juan se come 1 parte.",
+    "pregunta": "¿Qué fracción de la pizza ha comido?",
+    "resultado": "1/2"
+  },
+  {
+    "id": 3,
+    "enunciado": "Una tarta está dividida en 3 trozos iguales. Se comen 2 trozos.",
+    "pregunta": "¿Qué fracción de la tarta se ha comido?",
+    "resultado": "2/3"
+  },
+  {
+    "id": 4,
+    "enunciado": "Un chocolate tiene 4 onzas iguales. María se come 3 onzas.",
+    "pregunta": "¿Qué fracción del chocolate ha comido?",
+    "resultado": "3/4"
+  },
+  {
+    "id": 5,
+    "enunciado": "Una bolsa tiene 5 canicas iguales. Pedro saca 1 canica.",
+    "pregunta": "¿Qué fracción de las canicas ha sacado?",
+    "resultado": "1/5"
+  },
+  {
+    "id": 6,
+    "enunciado": "Un cuaderno tiene 5 páginas de ejercicios. Laura ha hecho 4.",
+    "pregunta": "¿Qué fracción de los ejercicios ha hecho?",
+    "resultado": "4/5"
+  },
+  {
+    "id": 7,
+    "enunciado": "Una cuerda se divide en 6 partes iguales. Se usan 3 partes.",
+    "pregunta": "¿Qué fracción de la cuerda se ha usado?",
+    "resultado": "3/6"
+  },
+  {
+    "id": 8,
+    "enunciado": "Una tarta tiene 6 trozos iguales. Solo queda 1 trozo sin comer.",
+    "pregunta": "¿Qué fracción de la tarta se ha comido?",
+    "resultado": "5/6"
+  },
+  {
+    "id": 9,
+    "enunciado": "Hay 7 globos iguales y se pinchan 2.",
+    "pregunta": "¿Qué fracción de los globos se han pinchado?",
+    "resultado": "2/7"
+  },
+  {
+    "id": 10,
+    "enunciado": "Una colección tiene 7 cromos. Falta solo 1 por conseguir.",
+    "pregunta": "¿Qué fracción de la colección ya se tiene?",
+    "resultado": "6/7"
+  },
+  {
+    "id": 11,
+    "enunciado": "Un tablero está dividido en 8 partes iguales. Se pintan 3 partes.",
+    "pregunta": "¿Qué fracción del tablero está pintada?",
+    "resultado": "3/8"
+  },
+  {
+    "id": 12,
+    "enunciado": "Un pastel tiene 8 trozos iguales. Solo queda 1 trozo.",
+    "pregunta": "¿Qué fracción del pastel se ha comido?",
+    "resultado": "7/8"
+  },
+  {
+    "id": 13,
+    "enunciado": "Una caja tiene 9 lápices iguales. Se usan 4.",
+    "pregunta": "¿Qué fracción de los lápices se ha usado?",
+    "resultado": "4/9"
+  },
+  {
+    "id": 14,
+    "enunciado": "Un álbum tiene espacio para 9 fotos. Falta colocar solo 1.",
+    "pregunta": "¿Qué fracción del álbum ya está completo?",
+    "resultado": "8/9"
+  },
+  {
+    "id": 15,
+    "enunciado": "Una tableta de chocolate tiene 10 onzas iguales. Se comen 5.",
+    "pregunta": "¿Qué fracción de la tableta se ha comido?",
+    "resultado": "5/10"
+  }
+]

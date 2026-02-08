@@ -1,0 +1,18 @@
+[
+  { "id": 1, "fraccion": "1/4" },
+  { "id": 2, "fraccion": "2/5" },
+  { "id": 3, "fraccion": "1/6" },
+  { "id": 4, "fraccion": "4/6" },
+  { "id": 5, "fraccion": "3/7" },
+  { "id": 6, "fraccion": "5/7" },
+  { "id": 7, "fraccion": "2/8" },
+  { "id": 8, "fraccion": "6/8" },
+  { "id": 9, "fraccion": "1/9" },
+  { "id": 10, "fraccion": "3/9" },
+  { "id": 11, "fraccion": "6/9" },
+  { "id": 12, "fraccion": "7/9" },
+  { "id": 13, "fraccion": "2/10" },
+  { "id": 14, "fraccion": "4/10" },
+  { "id": 15, "fraccion": "7/10" },
+  { "id": 16, "fraccion": "9/10" }
+]
